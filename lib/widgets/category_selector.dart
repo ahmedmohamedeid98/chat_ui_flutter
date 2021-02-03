@@ -17,7 +17,7 @@ class _CategorySelectorState extends State<CategorySelector> {
     ];
 
     return Container(
-      height: 100.0,
+      height: 90.0,
       color: Theme.of(context).primaryColor,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

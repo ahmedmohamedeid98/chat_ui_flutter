@@ -85,6 +85,20 @@ List<Message> chats = [
     isLiked: false,
     unread: false,
   ),
+  Message(
+    sender: sam,
+    time: "2:30 PM",
+    text: "Hey how are you ?",
+    isLiked: false,
+    unread: false,
+  ),
+  Message(
+    sender: sam,
+    time: "2:30 PM",
+    text: "Hey how are you ?",
+    isLiked: false,
+    unread: false,
+  ),
 ];
 
 List<Message> messages = [

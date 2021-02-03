@@ -36,86 +36,89 @@ class _MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-      color: message.unread ? Colors.red.shade100 : Colors.transparent,
+      margin: const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20.0),
+          bottomRight: Radius.circular(20.0),
+        ),
+        color: message.unread ? Color(0xFFFFEFEE) : Colors.transparent,
+      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage(message.sender.imageUrl),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage(message.sender.imageUrl),
+              ),
+              const SizedBox(width: 12),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(message.sender.name),
-                      Text(message.time),
-                    ],
+                  Text(
+                    message.sender.name,
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey.shade600),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          message.text,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      message.unread
-                          ? Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 5),
-                                child: Text(
-                                  'New',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            )
-                          : SizedBox.shrink(),
-                    ],
-                  ),
+                  const SizedBox(height: 8.0),
+                  _flexibleText(),
                 ],
               ),
-            ),
+            ],
           ),
-          /*
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //crossAxisAlignment: CrossAxisAlignment.center,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Flexible(
-                child: Text(
-                  message.text,
-                  overflow: TextOverflow.ellipsis,
+              Text(
+                message.time,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.grey.shade600,
                 ),
               ),
-              Container(
-                height: 20,
-                width: 30,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                child: Text(
-                  'New',
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
+              const SizedBox(height: 8.0),
+              message.unread ? _newText(context) : SizedBox(height: 20),
             ],
-          ),*/
+          ),
         ],
+      ),
+    );
+  }
+
+  Flexible _flexibleText() {
+    return Flexible(
+      child: Text(
+        message.text,
+        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+
+  Container _newText(BuildContext context) {
+    return Container(
+      height: 20,
+      width: 40,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        'New',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 12.0,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
