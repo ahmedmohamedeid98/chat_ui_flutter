@@ -1,6 +1,12 @@
 # chat_ui_flutter
 
-A new Flutter project.
+Design UI for chat app in flutter
+
+<p>
+<img src="github_images/1.jpg" width="210" height="420">
+  <img src="github_images/2.jpg" width="210" height="420">
+  <img src="github_images/3.jpg" width="210" height="420">
+</p>
 
 ## Getting Started
 
