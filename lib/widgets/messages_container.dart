@@ -1,4 +1,5 @@
 import 'package:chat_ui_flutter/models/message.dart';
+import 'package:chat_ui_flutter/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class MessagesContainer extends StatefulWidget {
@@ -18,7 +19,16 @@ class _MessagesContainerState extends State<MessagesContainer> {
         itemCount: widget.messages.length,
         itemExtent: 100.0,
         itemBuilder: (context, index) {
-          return _MessageCard(message: widget.messages[index]);
+          return GestureDetector(
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ChatScreen(
+                        user: widget.messages[index].sender,
+                      ),
+                    ),
+                  ),
+              child: _MessageCard(message: widget.messages[index]));
         },
       ),
     );

@@ -1,9 +1,9 @@
-import 'package:chat_ui_flutter/models/message.dart';
-import 'package:chat_ui_flutter/widgets/favorite_contacts.dart';
-import 'package:chat_ui_flutter/widgets/messages_container.dart';
-import 'package:chat_ui_flutter/widgets/widgets.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../models/message.dart';
+import '../widgets/favorite_contacts.dart';
+import '../widgets/messages_container.dart';
+import '../widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Chat',
+          'Chats',
           style: TextStyle(
             color: Colors.white,
             fontSize: 24.0,
